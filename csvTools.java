@@ -37,9 +37,10 @@ public class csvTools {
 	}
 	
 	public List<Map<String,String>> getTests(String filePath) throws Exception{
+		tests.clear();
 		openfile(filePath);
-	    String [] rowData;
-	    int row = 1; // the first data row in Excel is Row 2 
+		String [] rowData;
+		int row = 1; // the first data row in Excel is Row 2 
 		while ((rowData = reader.readNext()) != null) {
 			String errorMessage = String.format("ERROR: INCOMPLETE TEST DATA: row %d is missing a field", row++);
 			Assert.assertEquals(errorMessage, columnHeaders.length, rowData.length);
